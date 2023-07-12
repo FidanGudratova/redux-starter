@@ -9,7 +9,7 @@ class GoodsItem extends PureComponent {
 
     store.dispatch(addGood(myId));
   
-  }
+  } 
 
   render() {
     const { title, description, price, id } = this.props;
