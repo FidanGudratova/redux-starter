@@ -5,12 +5,6 @@ import  addGood from "../redux/actions/action";
 
 class GoodsItem extends PureComponent {
 
-  addToCardHandler = (myId) => {
-
-    store.dispatch(addGood(myId));
-  
-  } 
-
   render() {
     const { title, description, price, id } = this.props;
 
@@ -24,7 +18,7 @@ class GoodsItem extends PureComponent {
         <p className="goods-item__description">{description}</p>
         <button 
           className="goods-item__add-to-card" 
-          onClick={() => this.addToCardHandler(id)} >
+          onClick={() => this.props.addGood(id)} >
             Add to cart
         </button>
       </div>
@@ -32,4 +26,8 @@ class GoodsItem extends PureComponent {
   }
 }
 
-export default GoodsItem;
+const mapDispatchToProps = dispatch => ({
+  addGood: (id) => dispatch(addGood(id))
+});  
+
+export default connect(null, mapDispatchToProps) (GoodsItem);
